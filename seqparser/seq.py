@@ -10,16 +10,19 @@ def transcribe(seq: str, reverse: bool = False) -> str:
     Write a function that will transcribe (replace DNA sequence to RNA
     by replacing all 'T' to 'U') in an input sequence
     """
-    transcript = ''
-    str = str.upper()
-    for letter in seq:
-        transcript += TRANSCRIPTION_MAPPING.get(letter)
-    return transcript
+    reverse_transcript = reverse_transcribe(seq)
+    if reverse:
+        return reverse_transcript
+    else:
+        return reverse_transcript[::-1]
 
 def reverse_transcribe(seq: str) -> str:
     """
     Write a function that will transcribe an input sequence and reverse
     the sequence
     """
-    transcript = transcribe(str)
+    transcript = ''
+    str = str.upper()
+    for letter in seq:
+        transcript += TRANSCRIPTION_MAPPING.get(letter)
     return transcript[::-1]
