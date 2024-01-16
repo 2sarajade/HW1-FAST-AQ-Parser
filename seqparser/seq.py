@@ -22,7 +22,9 @@ def reverse_transcribe(seq: str) -> str:
     the sequence
     """
     transcript = ''
-    str = str.upper()
+    seq = seq.upper()
     for letter in seq:
+        if letter not in TRANSCRIPTION_MAPPING.keys():
+            raise ValueError("seq contains an unrecognized charater")
         transcript += TRANSCRIPTION_MAPPING.get(letter)
     return transcript[::-1]
